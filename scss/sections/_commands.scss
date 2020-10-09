@@ -1,0 +1,65 @@
+.command {
+  padding: 3rem;
+  background: white;
+
+  &__wrapper {
+    width: 100%;
+    padding: 3rem;
+    background: linear-gradient(to right, $turquoise, $purple);
+    border-radius: 5px;
+    padding: 3px;
+    margin-top: 2.5rem;
+  }
+
+  &__header {
+    font-family: $mono;
+    font-size: 2.1rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 2px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: #444;
+      background: linear-gradient(to right, $turquoise, $purple);
+    }
+  }
+
+  &__description {
+    margin-top: 1.5rem;
+    &--dark {
+      font-weight: 500;
+    }
+  }
+
+  &__option-header {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  &__option {
+    background-color: $grey;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-family: $mono;
+
+    &-wrapper {
+      margin-bottom: 1.5rem;
+    }
+    &-wrapper:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 550px){
+  .command{
+    padding: 2rem;
+  }
+}

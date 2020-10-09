@@ -1,0 +1,27 @@
+.grid-container {
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+  
+  & li{
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color:whitesmoke;
+  }
+}
+
+
+@media screen and (max-width: 550px){
+  .grid-container{
+    flex-direction: column;
+    text-align: start;
+    & li{
+      margin-right: 0;
+    }
+  }
+}

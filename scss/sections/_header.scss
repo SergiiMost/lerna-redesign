@@ -1,0 +1,122 @@
+.header{
+  height: 75vh;
+  background: linear-gradient(260deg, $orange 0%, $purple 50%,  $turquoise 100%);
+  display:  flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container{
+    max-width: 120rem;
+    width: 100%;
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__heading{
+    font-family: $mono;
+    color: white;
+    font-size: 2.4rem;
+    font-weight: 500;
+    max-width: 48rem;
+    margin: 2rem 0 4rem;
+    &-svg{
+      width: 100%;
+      max-width: 23rem;
+    }
+  }
+
+  &__image{
+    width: 100%;
+  }
+
+  &__socials{
+    display: flex;
+    align-items: center;
+
+    &--star-svg{
+      width: 20px;
+      height:20px;
+    }
+  }
+
+  &__button{
+    text-decoration: none;
+    color: inherit;
+    padding:.8rem 1.5rem;
+    background-color: $grey;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    font-family: $mono;
+
+    &--triangle{
+      position: relative;
+    }
+  }
+
+  &__button:hover{
+    background-color: darken($grey,10%);
+  }
+
+  &__button:hover .arrow-left{
+    border-right:8px solid darken($grey,10%);
+  }
+
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent; 
+  border-right:8px solid $grey; 
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left: -.8rem;
+}
+
+
+@media screen and (max-width: 1000px){
+  .header__container{
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 550px){
+ .header__image{
+   max-width: 30rem;
+ }
+ .header__text-container{
+  text-align: center;
+ }
+
+ .header__heading-svg{
+   max-width: 15rem;
+ }
+
+ .header__button{
+   padding: .6rem 1rem;
+ }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape)  {
+  .header{
+    min-height: 55rem;
+
+    &__text-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    &__image{
+      max-width: 35rem;
+    }
+  
+  }
+
+  
+}

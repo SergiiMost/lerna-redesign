@@ -1,0 +1,22 @@
+.start{
+
+  &__instruction-wrapper{
+    margin-top: 3rem;
+  }
+
+  &__instruction{
+    padding: 2rem;
+    background:  linear-gradient(89.5deg, rgba(0, 255, 240, 0.5) 0%, rgba(103, 126, 248, 0.5) 100%);;
+    font-family: $mono;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-top: .5rem;
+    &--grey{
+      background: $grey;
+    }
+  } 
+
+
+}
+
+

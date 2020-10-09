@@ -1,0 +1,32 @@
+.about{
+  &__icons-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 3rem 0;
+    align-items: center;
+  }
+  &__icon-group{
+    display: flex;
+    flex-direction: column;
+    font-family: $mono;
+    font-size: 1.6rem;
+    font-weight: 500; 
+    & span{
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 550px){
+  .about__icon-group{
+    text-align: center;
+    line-height: 100%;   
+  } 
+  .content-wrapper{
+    padding: 0 1rem;
+  }
+
+  .about__icon{
+    max-height: 40px;
+  }
+}
