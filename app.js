@@ -1,4 +1,3 @@
-
 (async () => {
   const responseObj = await fetch("http://api.github.com/repos/lerna/lerna")
   const data = await responseObj.json()
