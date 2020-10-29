@@ -23,13 +23,13 @@
   &__socials{
     display: flex;
     flex-direction: column;
-
   }
 
   &__social-link{
     color: inherit;
     display: flex;
     align-items: center;
+    
     & span{
       margin-left: 5px;
       display: inline-block;
