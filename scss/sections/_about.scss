@@ -1,33 +1,40 @@
-.about{
-  &__icons-container{
+.about {
+  &__icons-container {
     display: flex;
     justify-content: space-around;
     margin: 3rem 0;
     align-items: center;
   }
-  &__icon-group{
+
+  &__icon-group {
     display: flex;
     flex-direction: column;
     font-family: $mono;
     font-size: 1.6rem;
-    font-weight: 500; 
-    & span{
+    font-weight: 500;
+    align-items: center;
+    & span {
       margin-top: 1rem;
     }
   }
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-@media screen and (max-width: 550px){
-  .about__icon-group{
+@media screen and (max-width: 550px) {
+  .about__icon-group {
     text-align: center;
-    line-height: 100%;   
-  } 
-  
-  .content-wrapper{
+    line-height: 100%;
+  }
+
+  .content-wrapper {
     padding: 0 1rem;
   }
 
-  .about__icon{
+  .about__icon {
     max-height: 40px;
   }
 }
