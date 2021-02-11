@@ -1,464 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
+    <meta name="description" content="Lerna, a tool for managing JavaScript projects with multiple packages." />
+    <title>Lerna · A tool for managing JavaScript projects with multiple packages.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1" />
-  <meta name="description" content="Lerna, a tool for managing JavaScript projects with multiple packages." />
-  <title>Lerna · A tool for managing JavaScript projects with multiple packages.</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <header class="header">
-    <div class="header__container">
-      <div class="header__text-container">
-        <img src="./images/lerna-text.svg" alt="Lerna text" class="header__heading-svg" />
-        <h1 class="header__heading">a tool for managing JavaScript projects with multiple packages</h1>
-        <div class="header__socials">
-          <a href="https://twitter.com/lernajs" target="_blank" rel="noreferrer" class="header__button u-mr-2">
-            <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
-            </svg>
-            <span class="u-ml-05">Follow</span>
-          </a>
-          <a href="https://github.com/lerna/lerna" target="_blank" rel="noreferrer" class="header__button u-mr-1">
-            <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
-            </svg>
-            <span class="u-ml-05">Github</span>
-          </a>
-          <a href="https://github.com/lerna/lerna/stargazers" target="_blank" rel="noreferrer"
-            class="header__button header__button--triangle">
-            <div class="arrow-left"></div>
-            <img src="./images/star.svg" alt="star image" class="header__socials--star-svg" />
-            <span class="u-ml-05" id="stargazers">24.8k</span>
-          </a>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <div class="header__text-container">
+          <img src="./images/lerna-text.svg" alt="Lerna text" class="header__heading-svg" />
+          <h1 class="header__heading">a tool for managing JavaScript projects with multiple packages</h1>
+          <div class="header__socials">
+            <a href="https://twitter.com/lernajs" target="_blank" rel="noreferrer" class="header__button u-mr-2">
+              <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"
+                />
+              </svg>
+              <span class="u-ml-05">Follow</span>
+            </a>
+            <a href="https://github.com/lerna/lerna" target="_blank" rel="noreferrer" class="header__button u-mr-1">
+              <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+                />
+              </svg>
+              <span class="u-ml-05">Github</span>
+            </a>
+            <a
+              href="https://github.com/lerna/lerna/stargazers"
+              target="_blank"
+              rel="noreferrer"
+              class="header__button header__button--triangle"
+            >
+              <div class="arrow-left"></div>
+              <img src="./images/star.svg" alt="star image" class="header__socials--star-svg" />
+              <span class="u-ml-05" id="stargazers">24.8k</span>
+            </a>
+          </div>
+        </div>
+        <div class="header__image-container">
+          <img src="./images/lerna-image.svg" alt="Lerna logo" class="header__image" />
         </div>
       </div>
-      <div class="header__image-container">
-        <img src="./images/lerna-image.svg" alt="Lerna logo" class="header__image" />
-      </div>
-    </div>
-  </header>
-  <main class="main">
-    <!--ABOUT SECTION-->
-    <section class="about section" id="about">
-      <div class="content-wrapper">
-        <div class="content">
-          <h2 class="about__heading" id="#about">What is Lerna ?</h2>
-          <div class="about__icons-container">
-            <div class="about__icon-group">
-              <img src="./images/gear.svg" alt="image of a gear" class="about__icon" />
-              <span>better workflow</span>
+    </header>
+    <main class="main">
+      <!--ABOUT SECTION-->
+      <section class="about section" id="about">
+        <div class="content-wrapper">
+          <div class="content">
+            <h2 class="about__heading" id="#about">What is Lerna ?</h2>
+            <div class="about__icons-container">
+              <div class="about__icon-group">
+                <img src="./images/gear.svg" alt="image of a gear" class="about__icon" />
+                <span>better workflow</span>
+              </div>
+              <div class="about__icon-group">
+                <img src="./images/presentation.svg" alt="image of a presentation desk" class="about__icon" />
+                <span>easier managment</span>
+              </div>
+              <div class="about__icon-group">
+                <img src="./images/flask.svg" alt="image of a flask" class="about__icon" />
+                <span>simpler testing</span>
+              </div>
             </div>
-            <div class="about__icon-group">
-              <img src="./images/presentation.svg" alt="image of a presentation desk" class="about__icon" />
-              <span>easier managment</span>
-            </div>
-            <div class="about__icon-group">
-              <img src="./images/flask.svg" alt="image of a flask" class="about__icon" />
-              <span>simpler testing</span>
-            </div>
+            <p class="u-mb-1">
+              Splitting up large codebases into separate independently versioned packages is extremely useful for code
+              sharing. However, making changes across many repositories is <span class="u-darker">messy</span> and
+              <span class="u-darker">difficult</span> to track, and testing across repositories gets complicated really
+              fast.
+            </p>
+            <p class="u-mb-1">
+              To solve these (and many other) problems, some projects will organize their codebases into multi-package
+              repositories. Projects like Babel, React, Angular, Ember, Meteor, Jest, and many others develop all of
+              their packages within a single repository.
+            </p>
+            <p class="u-darker">
+              Lerna is a tool that optimizes the workflow around managing multi-package repositories with git and npm.
+            </p>
           </div>
-          <p class="u-mb-1">
-            Splitting up large codebases into separate independently versioned packages is extremely useful for code
-            sharing. However, making changes across many repositories is <span class="u-darker">messy</span> and
-            <span class="u-darker">difficult</span> to track, and testing across repositories gets complicated really
-            fast.
-          </p>
-          <p class="u-mb-1">
-            To solve these (and many other) problems, some projects will organize their codebases into multi-package
-            repositories. Projects like Babel, React, Angular, Ember, Meteor, Jest, and many others develop all of
-            their packages within a single repository.
-          </p>
-          <p class="u-darker">
-            Lerna is a tool that optimizes the workflow around managing multi-package repositories with git and npm.
-          </p>
         </div>
-      </div>
-    </section>
-    <!-- END OF ABOUT SECTION-->
+      </section>
+      <!-- END OF ABOUT SECTION-->
 
-    <!--GETTING STARTED SECTION-->
-    <section class="start section" id="getting-started">
-      <div class="background-light"></div>
-      <div class="content-wrapper">
-        <div class="content">
-          <h2>Getting started</h2>
-          <p class="u-mt-3 u-darker">
-            Lets start by installing Lerna globally with
-            <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer" class="text-link">npm</a>:
-          </p>
-          <div class="start__instruction-wrapper">
-            <p>Lerna 2.x is the recommended version to start with.</p>
-            <p class="start__instruction">$ npm install --global lerna</p>
-          </div>
-          <div class="start__instruction-wrapper">
-            <p>Next we'll create a new git repository:</p>
-            <p class="start__instruction">$ git init lerna-repo && cd lerna-repo</p>
-          </div>
-          <div class="start__instruction-wrapper">
-            <p>And now let's turn it into a Lerna repo:</p>
-            <p class="start__instruction">$ lerna init</p>
-          </div>
-          <div class="start__instruction-wrapper">
-            <p>Your repository should look like this now:</p>
-            <pre class="start__instruction start__instruction--grey">
+      <!--GETTING STARTED SECTION-->
+      <section class="start section" id="getting-started">
+        <div class="background-light"></div>
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>Getting started</h2>
+            <p class="u-mt-3 u-darker">
+              Lets start by installing Lerna globally with
+              <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer" class="text-link">npm</a>:
+            </p>
+            <div class="start__instruction-wrapper">
+              <p>Lerna 2.x is the recommended version to start with.</p>
+              <p class="start__instruction">$ npm install --global lerna</p>
+            </div>
+            <div class="start__instruction-wrapper">
+              <p>Next we'll create a new git repository:</p>
+              <p class="start__instruction">$ git init lerna-repo && cd lerna-repo</p>
+            </div>
+            <div class="start__instruction-wrapper">
+              <p>And now let's turn it into a Lerna repo:</p>
+              <p class="start__instruction">$ lerna init</p>
+            </div>
+            <div class="start__instruction-wrapper">
+              <p>Your repository should look like this now:</p>
+              <pre class="start__instruction start__instruction--grey">
 lerna-repo/
     packages/
     package.json
     lerna.json
-            </pre>
+            </pre
+              >
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--END OF GETTING STARTED SECTION-->
+      </section>
+      <!--END OF GETTING STARTED SECTION-->
 
-    <!--COMMANDS SECTION-->
-    <section class="commands section" id="commands">
+      <!--COMMANDS SECTION-->
+      <section class="commands section" id="commands">
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>Commands</h2>
+            <p class="u-mt-3">
+              Here is a brief introduction for each command. Please visit the
+              <a href="https://github.com/lerna/lerna#readme" target="_blank" rel="noreferrer" class="text-link">
+                README
+              </a>
+              for more detailed informations.
+            </p>
+            <div class="command__wrapper">
+              <div class="command" id="command-init">
+                <span class="command__header">lerna init</span>
+                <p class="command__description u-mb-105">
+                  Create a new lerna repo or upgrade an existing repo to the current version of Lerna.
+                </p>
+                <span class="command__option-header">Options:</span>
+                <p>
+                  <span class="command__option">--independent/-i</span><span> - use independent versioning mode.</span>
+                </p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-bootstrap">
+                <span class="command__header">lerna bootstrap</span>
+                <p class="command__description u-mb-105">
+                  Bootstrap the packages in the current Lerna repo. Installing all their dependencies and linking any
+                  cross-dependencies.
+                </p>
+                <p class="command__description--dark">
+                  This command is crucial, as it allows you to use your package names in require() as if the packages
+                  were already existing and available in your node_modules folder.
+                </p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-import">
+                <span class="command__header">lerna import &lsaquo;pathToRepo&rsaquo;</span>
+                <p class="command__description">
+                  Import the package in the local path <span class="u-bold">&lsaquo;pathToRepo&rsaquo;</span> into
+                  <span class="u-bold">packages/&lsaquo;directory-name&rsaquo;</span> with commit history.
+                </p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-publish">
+                <span class="command__header">lerna publish</span>
+                <p class="command__description u-mb-105">
+                  Create a new release of the packages that have been updated. Prompts for a new version and updates all
+                  the packages on git and npm.
+                </p>
+                <span class="command__option-header">Options:</span>
+                <p class="command__option-wrapper">
+                  <span class="command__option">--npm-tag [tagname]</span>
+                  <span> - publish to npm with the given npm dist-tag (defaults to latest). </span>
+                </p>
+                <p class="command__option-wrapper">
+                  <span class="command__option">--canary</span> /
+                  <span class="command__option"> -c</span>
+                  <span> - create a canary relase.</span>
+                </p>
+                <p class="command__option-wrapper">
+                  <span class="command__option">--skip-git</span>
+                  <span> - don't run any git commands. </span>
+                </p>
+                <p class="command__option-wrapper">
+                  <span class="command__option">--force-publish [packages]</span>
+                  <span>
+                    - force publish for the specified packages (comma-separated) or all packages using * (skips the git
+                    diff check for changed packages).
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-changed">
+                <span class="command__header">lerna changed</span>
+                <p class="command__description">Check which packages have changed since last release.</p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-diff">
+                <span class="command__header">lerna diff [package?]</span>
+                <p class="command__description">Diff all packages or a single package since the last release.</p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-run">
+                <span class="command__header">lerna run [script]</span>
+                <p class="command__description">
+                  Run an
+                  <a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="noreferrer" class="text-link">
+                    npm script
+                  </a>
+                  in each package that contains that script.
+                </p>
+              </div>
+            </div>
+            <div class="command__wrapper">
+              <div class="command" id="command-ls">
+                <span class="command__header">lerna ls</span>
+                <p class="command__description">List all of the public packages in the current Lerna repo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--END OF COMMANDS SECTION-->
+
+      <!--USERS SECTION-->
+      <section class="users section" id="users">
+        <div class="background-light background-light--small"></div>
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>Who is using Lerna ?</h2>
+            <ul class="grid-container u-mt-3">
+              <li>
+                <a href="https://github.com/primer/primer" target="_blank" rel="noreferrer" class="text-link"
+                  >primer/primer</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/babel/babel" target="_blank" rel="noreferrer" class="text-link"
+                  >babel/babel</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/facebook/create-react-app"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >facebook/create-react-app</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/ReactTraining/react-router"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >ReactTraining/react-router</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/pugjs/pug" target="_blank" rel="noreferrer" class="text-link">pugjs/pug</a>
+              </li>
+              <li>
+                <a href="https://github.com/facebook/jest" target="_blank" rel="noreferrer" class="text-link"
+                  >facebook/jest</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/reactotron/reactotron" target="_blank" rel="noreferrer" class="text-link"
+                  >reactotron/reactotron</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/ElemeFE/mint-ui" target="_blank" rel="noreferrer" class="text-link"
+                  >ElemeFE/mint-ui</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/devtools-html/debugger.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >devtools-html/debugger.html</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/alibaba/rax" target="_blank" rel="noreferrer" class="text-link"
+                  >alibaba/rax</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/Turfjs/turf" target="_blank" rel="noreferrer" class="text-link"
+                  >Turfjs/turf</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/babel/babili" target="_blank" rel="noreferrer" class="text-link"
+                  >babel/babili</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/storybooks/storybook" target="_blank" rel="noreferrer" class="text-link"
+                  >storybooks/storybook</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/xmppjs/xmpp.js" target="_blank" rel="noreferrer" class="text-link"
+                  >xmppjs/xmpp.js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/wooorm/retext" target="_blank" rel="noreferrer" class="text-link"
+                  >wooorm/retext</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/jumpsuit/jumpsuit" target="_blank" rel="noreferrer" class="text-link"
+                  >jumpsuit/jumpsuit</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/strapi/strapi" target="_blank" rel="noreferrer" class="text-link"
+                  >strapi/strapi</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noreferrer" class="text-link"
+                  >cloudflare/cf-ui</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/colmena/colmena" target="_blank" rel="noreferrer" class="text-link"
+                  >colmena/colmena</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/angus-c/just" target="_blank" rel="noreferrer" class="text-link"
+                  >angus-c/just</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/cerebral/cerebral" target="_blank" rel="noreferrer" class="text-link"
+                  >cerebral/cerebral</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/nteract/nteract" target="_blank" rel="noreferrer" class="text-link"
+                  >nteract/nteract</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/wooorm/remark" target="_blank" rel="noreferrer" class="text-link"
+                  >wooorm/remark</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/rofrischmann/fela" target="_blank" rel="noreferrer" class="text-link"
+                  >rofrischmann/fela</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/tbranyen/diffhtml" target="_blank" rel="noreferrer" class="text-link"
+                  >tbranyen/diffhtml</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/ElemeFE/cooking" target="_blank" rel="noreferrer" class="text-link"
+                  >ElemeFE/cooking</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/antwarjs/antwar" target="_blank" rel="noreferrer" class="text-link"
+                  >antwarjs/antwar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/apollostack/graphql-server"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >apollostack/graphql-server</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/jimpick/lambda-comments" target="_blank" rel="noreferrer" class="text-link"
+                  >jimpick/lambda-comments</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/lystable/recon" target="_blank" rel="noreferrer" class="text-link"
+                  >lystable/recon</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/marudor/flowInterfaces" target="_blank" rel="noreferrer" class="text-link"
+                  >marudor/flowInterfaces</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/GoogleChrome/sw-helpers" target="_blank" rel="noreferrer" class="text-link"
+                  >GoogleChrome/sw-helpers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/webpack-preset/webpack-preset"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >webpack-preset/webpack-preset</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/vazco/uniforms" target="_blank" rel="noreferrer" class="text-link"
+                  >vazco/uniforms</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/metal/metal.js" target="_blank" rel="noreferrer" class="text-link"
+                  >metal/metal.js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/steelbrain/pundle" target="_blank" rel="noreferrer" class="text-link"
+                  >steelbrain/pundle</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/neos/neos-ui" target="_blank" rel="noreferrer" class="text-link"
+                  >neos/neos-ui</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/mosjs/mos" target="_blank" rel="noreferrer" class="text-link">mosjs/mos</a>
+              </li>
+              <li>
+                <a href="https://github.com/lore/lore" target="_blank" rel="noreferrer" class="text-link">lore/lore</a>
+              </li>
+              <li>
+                <a href="https://github.com/act-framework/act" target="_blank" rel="noreferrer" class="text-link"
+                  >act-framework/act</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/yvele/poosh" target="_blank" rel="noreferrer" class="text-link"
+                  >yvele/poosh</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/noderaider/gridiron" target="_blank" rel="noreferrer" class="text-link"
+                  >noderaider/gridiron</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/superawesomelabs/leo" target="_blank" rel="noreferrer" class="text-link"
+                  >superawesomelabs/leo</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/tocco/tocco-client" target="_blank" rel="noreferrer" class="text-link"
+                  >tocco/tocco-client</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/zalando-incubator/tessellate"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >zalando-incubator/tessellate</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/sencha/extjs-reactor" target="_blank" rel="noreferrer" class="text-link"
+                  >sencha/extjs-reactor</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/DigitalRiver/react-atlas" target="_blank" rel="noreferrer" class="text-link"
+                  >DigitalRiver/react-atlas</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/forivall/tacoscript" target="_blank" rel="noreferrer" class="text-link"
+                  >forivall/tacoscript</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/Boxable/box-ui" target="_blank" rel="noreferrer" class="text-link"
+                  >Boxable/box-ui</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/flux-capacitor/flux-capacitor"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >flux-capacitor/flux-capacitor</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/trepo/trepo-js" target="_blank" rel="noreferrer" class="text-link"
+                  >trepo/trepo-js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/spacedoc/spacedoc" target="_blank" rel="noreferrer" class="text-link"
+                  >spacedoc/spacedoc</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/oknosoft/metadata.js" target="_blank" rel="noreferrer" class="text-link"
+                  >oknosoft/metadata.js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/uber-web/uber-eslint" target="_blank" rel="noreferrer" class="text-link"
+                  >uber-web/uber-eslint</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/brittanica/brittanica" target="_blank" rel="noreferrer" class="text-link"
+                  >brittanica/brittanica</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/openzipkin/zipkin-js" target="_blank" rel="noreferrer" class="text-link"
+                  >openzipkin/zipkin-js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/vudash/vudash" target="_blank" rel="noreferrer" class="text-link"
+                  >vudash/vudash</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/nteract/commuter" target="_blank" rel="noreferrer" class="text-link"
+                  >nteract/commuter</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/frintjs/frint" target="_blank" rel="noreferrer" class="text-link"
+                  >frintjs/frint</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/fyndiq/fyndiq-ui" target="_blank" rel="noreferrer" class="text-link"
+                  >fyndiq/fyndiq-ui</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/azu/immutable-array-prototype"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >azu/immutable-array-prototype</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/TrueCar/gluestick" target="_blank" rel="noreferrer" class="text-link"
+                  >TrueCar/gluestick</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/KELiON/create-cerebro-plugin"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >KELiON/create-cerebro-plugin</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/phenomic/phenomic" target="_blank" rel="noreferrer" class="text-link"
+                  >phenomic/phenomic</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/sterjakovigor/vqua" target="_blank" rel="noreferrer" class="text-link"
+                  >sterjakovigor/vqua</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/wireapp/wire-web-packages"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >wireapp/wire-web-packages</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/klis87/redux-saga-requests"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >klis87/redux-saga-requests</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/WordPress/gutenberg" target="_blank" rel="noreferrer" class="text-link"
+                  >WordPress/gutenberg</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/react-cosmos/react-cosmos"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >react-cosmos/react-cosmos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jsbites/jedifocus-monorepo"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >jsbites/jedifocus-monorepo</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/FoalTS/foal" target="_blank" rel="noreferrer" class="text-link"
+                  >FoalTS/foal</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/emotion-js/emotion" target="_blank" rel="noreferrer" class="text-link"
+                  >emotion-js/emotion</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/Bamieh/reflow/" target="_blank" rel="noreferrer" class="text-link"
+                  >Bamieh/reflow</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/transloadit/uppy/" target="_blank" rel="noreferrer" class="text-link"
+                  >transloadit/uppy</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/olistic/warriorjs" target="_blank" rel="noreferrer" class="text-link"
+                  >olistic/warriorjs</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/gatsbyjs/gatsby" target="_blank" rel="noreferrer" class="text-link"
+                  >gatsbyjs/gatsby</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/feathersjs/feathers" target="_blank" rel="noreferrer" class="text-link"
+                  >feathersjs/feathers</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noreferrer" class="text-link"
+                  >vuejs/vue-cli</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/dvajs/dva" target="_blank" rel="noreferrer" class="text-link">dvajs/dva</a>
+              </li>
+              <li>
+                <a href="https://github.com/umijs/umi" target="_blank" rel="noreferrer" class="text-link">umijs/umi</a>
+              </li>
+              <li>
+                <a href="https://github.com/SBoudrias/Inquirer.js" target="_blank" rel="noreferrer" class="text-link"
+                  >SBoudrias/Inquirer.js</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/pedronauck/docz" target="_blank" rel="noreferrer" class="text-link"
+                  >pedronauck/docz</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/tasitlabs/tasitsdk" target="_blank" rel="noreferrer" class="text-link"
+                  >tasitlabs/tasitsdk</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/zeit/next.js" target="_blank" rel="noreferrer" class="text-link"
+                  >zeit/next.js</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/react-bootstrap-table/react-bootstrap-table2"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >react-bootstrap-table/react-bootstrap-table2</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/webpack/webpack-cli" target="_blank" rel="noreferrer" class="text-link"
+                  >webpack/webpack-cli</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/reakit/reakit" target="_blank" rel="noreferrer" class="text-link"
+                  >reakit/reakit</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/webdriverio/webdriverio" target="_blank" rel="noreferrer" class="text-link"
+                  >webdriverio/webdriverio</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/graycoreio/daffodil" target="_blank" rel="noreferrer" class="text-link"
+                  >graycoreio/daffodil</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/typescript-eslint/typescript-eslint"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-link"
+                  >typescript-eslint/typescript-eslint</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/stoplightio/prism" target="_blank" rel="noreferrer" class="text-link"
+                  >stoplightio/prism</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
       <div class="content-wrapper">
-        <div class="content">
-          <h2>Commands</h2>
-          <p class="u-mt-3">
-            Here is a brief introduction for each command. Please visit the
-            <a href="https://github.com/lerna/lerna#readme" target="_blank" rel="noreferrer" class="text-link">
-              README
+        <div class="footer__content">
+          <div class="footer__socials">
+            <a
+              href="https://github.com/lerna/lerna"
+              class="footer__social-link u-mb-1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+                />
+              </svg>
+              <span>Github</span>
             </a>
-            for more detailed informations.
-          </p>
-          <div class="command__wrapper">
-            <div class="command" id="command-init">
-              <span class="command__header">lerna init</span>
-              <p class="command__description u-mb-105">
-                Create a new lerna repo or upgrade an existing repo to the current version of Lerna.
-              </p>
-              <span class="command__option-header">Options:</span>
-              <p>
-                <span class="command__option">--independent/-i</span><span> - use independent versioning mode.</span>
-              </p>
-            </div>
+            <a href="https://twitter.com/lernajs" class="footer__social-link" target="_blank" rel="noreferrer">
+              <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"
+                />
+              </svg>
+              <span>Twitter</span>
+            </a>
           </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-bootstrap">
-              <span class="command__header">lerna bootstrap</span>
-              <p class="command__description u-mb-105">
-                Bootstrap the packages in the current Lerna repo. Installing all their dependencies and linking any
-                cross-dependencies.
-              </p>
-              <p class="command__description--dark">
-                This command is crucial, as it allows you to use your package names in require() as if the packages
-                were already existing and available in your node_modules folder.
-              </p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-import">
-              <span class="command__header">lerna import &lsaquo;pathToRepo&rsaquo;</span>
-              <p class="command__description">
-                Import the package in the local path <span class="u-bold">&lsaquo;pathToRepo&rsaquo;</span> into
-                <span class="u-bold">packages/&lsaquo;directory-name&rsaquo;</span> with commit history.
-              </p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-publish">
-              <span class="command__header">lerna publish</span>
-              <p class="command__description u-mb-105">
-                Create a new release of the packages that have been updated. Prompts for a new version and updates all
-                the packages on git and npm.
-              </p>
-              <span class="command__option-header">Options:</span>
-              <p class="command__option-wrapper">
-                <span class="command__option">--npm-tag [tagname]</span>
-                <span> - publish to npm with the given npm dist-tag (defaults to latest). </span>
-              </p>
-              <p class="command__option-wrapper">
-                <span class="command__option">--canary</span> /
-                <span class="command__option"> -c</span>
-                <span> - create a canary relase.</span>
-              </p>
-              <p class="command__option-wrapper">
-                <span class="command__option">--skip-git</span>
-                <span> - don't run any git commands. </span>
-              </p>
-              <p class="command__option-wrapper">
-                <span class="command__option">--force-publish [packages]</span>
-                <span>
-                  - force publish for the specified packages (comma-separated) or all packages using * (skips the git
-                  diff check for changed packages).
-                </span>
-              </p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-changed">
-              <span class="command__header">lerna changed</span>
-              <p class="command__description">Check which packages have changed since last release.</p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-diff">
-              <span class="command__header">lerna diff [package?]</span>
-              <p class="command__description">Diff all packages or a single package since the last release.</p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-run">
-              <span class="command__header">lerna run [script]</span>
-              <p class="command__description">
-                Run an
-                <a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="noreferrer" class="text-link">
-                  npm script
-                </a>
-                in each package that contains that script.
-              </p>
-            </div>
-          </div>
-          <div class="command__wrapper">
-            <div class="command" id="command-ls">
-              <span class="command__header">lerna ls</span>
-              <p class="command__description">List all of the public packages in the current Lerna repo.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--END OF COMMANDS SECTION-->
-
-    <!--USERS SECTION-->
-    <section class="users section" id="users">
-      <div class="background-light background-light--small"></div>
-      <div class="content-wrapper">
-        <div class="content">
-          <h2>Who is using Lerna ?</h2>
-          <ul class="grid-container u-mt-3">
-            <li><a href="https://github.com/primer/primer" target="_blank" rel="noreferrer"
-                class="text-link">primer/primer</a></li>
-            <li><a href="https://github.com/babel/babel" target="_blank" rel="noreferrer"
-                class="text-link">babel/babel</a></li>
-            <li><a href="https://github.com/facebook/create-react-app" target="_blank" rel="noreferrer"
-                class="text-link">facebook/create-react-app</a></li>
-            <li><a href="https://github.com/ReactTraining/react-router" target="_blank" rel="noreferrer"
-                class="text-link">ReactTraining/react-router</a></li>
-            <li><a href="https://github.com/pugjs/pug" target="_blank" rel="noreferrer" class="text-link">pugjs/pug</a>
-            </li>
-            <li><a href="https://github.com/facebook/jest" target="_blank" rel="noreferrer"
-                class="text-link">facebook/jest</a></li>
-            <li><a href="https://github.com/reactotron/reactotron" target="_blank" rel="noreferrer"
-                class="text-link">reactotron/reactotron</a></li>
-            <li><a href="https://github.com/ElemeFE/mint-ui" target="_blank" rel="noreferrer"
-                class="text-link">ElemeFE/mint-ui</a></li>
-            <li><a href="https://github.com/devtools-html/debugger.html" target="_blank" rel="noreferrer"
-                class="text-link">devtools-html/debugger.html</a></li>
-            <li><a href="https://github.com/alibaba/rax" target="_blank" rel="noreferrer"
-                class="text-link">alibaba/rax</a></li>
-            <li><a href="https://github.com/Turfjs/turf" target="_blank" rel="noreferrer"
-                class="text-link">Turfjs/turf</a></li>
-            <li><a href="https://github.com/babel/babili" target="_blank" rel="noreferrer"
-                class="text-link">babel/babili</a></li>
-            <li><a href="https://github.com/storybooks/storybook" target="_blank" rel="noreferrer"
-                class="text-link">storybooks/storybook</a></li>
-            <li><a href="https://github.com/xmppjs/xmpp.js" target="_blank" rel="noreferrer"
-                class="text-link">xmppjs/xmpp.js</a></li>
-            <li><a href="https://github.com/wooorm/retext" target="_blank" rel="noreferrer"
-                class="text-link">wooorm/retext</a></li>
-            <li><a href="https://github.com/jumpsuit/jumpsuit" target="_blank" rel="noreferrer"
-                class="text-link">jumpsuit/jumpsuit</a></li>
-            <li><a href="https://github.com/strapi/strapi" target="_blank" rel="noreferrer"
-                class="text-link">strapi/strapi</a></li>
-            <li><a href="https://github.com/cloudflare/cf-ui" target="_blank" rel="noreferrer"
-                class="text-link">cloudflare/cf-ui</a></li>
-            <li><a href="https://github.com/colmena/colmena" target="_blank" rel="noreferrer"
-                class="text-link">colmena/colmena</a></li>
-            <li><a href="https://github.com/angus-c/just" target="_blank" rel="noreferrer"
-                class="text-link">angus-c/just</a></li>
-            <li><a href="https://github.com/cerebral/cerebral" target="_blank" rel="noreferrer"
-                class="text-link">cerebral/cerebral</a></li>
-            <li><a href="https://github.com/nteract/nteract" target="_blank" rel="noreferrer"
-                class="text-link">nteract/nteract</a></li>
-            <li><a href="https://github.com/wooorm/remark" target="_blank" rel="noreferrer"
-                class="text-link">wooorm/remark</a></li>
-            <li><a href="https://github.com/rofrischmann/fela" target="_blank" rel="noreferrer"
-                class="text-link">rofrischmann/fela</a></li>
-            <li><a href="https://github.com/tbranyen/diffhtml" target="_blank" rel="noreferrer"
-                class="text-link">tbranyen/diffhtml</a></li>
-            <li><a href="https://github.com/ElemeFE/cooking" target="_blank" rel="noreferrer"
-                class="text-link">ElemeFE/cooking</a></li>
-            <li><a href="https://github.com/antwarjs/antwar" target="_blank" rel="noreferrer"
-                class="text-link">antwarjs/antwar</a></li>
-            <li><a href="https://github.com/apollostack/graphql-server" target="_blank" rel="noreferrer"
-                class="text-link">apollostack/graphql-server</a></li>
-            <li><a href="https://github.com/jimpick/lambda-comments" target="_blank" rel="noreferrer"
-                class="text-link">jimpick/lambda-comments</a></li>
-            <li><a href="https://github.com/lystable/recon" target="_blank" rel="noreferrer"
-                class="text-link">lystable/recon</a></li>
-            <li><a href="https://github.com/marudor/flowInterfaces" target="_blank" rel="noreferrer"
-                class="text-link">marudor/flowInterfaces</a></li>
-            <li><a href="https://github.com/GoogleChrome/sw-helpers" target="_blank" rel="noreferrer"
-                class="text-link">GoogleChrome/sw-helpers</a></li>
-            <li><a href="https://github.com/webpack-preset/webpack-preset" target="_blank" rel="noreferrer"
-                class="text-link">webpack-preset/webpack-preset</a></li>
-            <li><a href="https://github.com/vazco/uniforms" target="_blank" rel="noreferrer"
-                class="text-link">vazco/uniforms</a></li>
-            <li><a href="https://github.com/metal/metal.js" target="_blank" rel="noreferrer"
-                class="text-link">metal/metal.js</a></li>
-            <li><a href="https://github.com/steelbrain/pundle" target="_blank" rel="noreferrer"
-                class="text-link">steelbrain/pundle</a></li>
-            <li><a href="https://github.com/neos/neos-ui" target="_blank" rel="noreferrer"
-                class="text-link">neos/neos-ui</a></li>
-            <li><a href="https://github.com/mosjs/mos" target="_blank" rel="noreferrer" class="text-link">mosjs/mos</a>
-            </li>
-            <li><a href="https://github.com/lore/lore" target="_blank" rel="noreferrer" class="text-link">lore/lore</a>
-            </li>
-            <li><a href="https://github.com/act-framework/act" target="_blank" rel="noreferrer"
-                class="text-link">act-framework/act</a></li>
-            <li><a href="https://github.com/yvele/poosh" target="_blank" rel="noreferrer"
-                class="text-link">yvele/poosh</a></li>
-            <li><a href="https://github.com/noderaider/gridiron" target="_blank" rel="noreferrer"
-                class="text-link">noderaider/gridiron</a></li>
-            <li><a href="https://github.com/superawesomelabs/leo" target="_blank" rel="noreferrer"
-                class="text-link">superawesomelabs/leo</a></li>
-            <li><a href="https://github.com/tocco/tocco-client" target="_blank" rel="noreferrer"
-                class="text-link">tocco/tocco-client</a></li>
-            <li><a href="https://github.com/zalando-incubator/tessellate" target="_blank" rel="noreferrer"
-                class="text-link">zalando-incubator/tessellate</a></li>
-            <li><a href="https://github.com/sencha/extjs-reactor" target="_blank" rel="noreferrer"
-                class="text-link">sencha/extjs-reactor</a></li>
-            <li><a href="https://github.com/DigitalRiver/react-atlas" target="_blank" rel="noreferrer"
-                class="text-link">DigitalRiver/react-atlas</a></li>
-            <li><a href="https://github.com/forivall/tacoscript" target="_blank" rel="noreferrer"
-                class="text-link">forivall/tacoscript</a></li>
-            <li><a href="https://github.com/Boxable/box-ui" target="_blank" rel="noreferrer"
-                class="text-link">Boxable/box-ui</a></li>
-            <li><a href="https://github.com/flux-capacitor/flux-capacitor" target="_blank" rel="noreferrer"
-                class="text-link">flux-capacitor/flux-capacitor</a></li>
-            <li><a href="https://github.com/trepo/trepo-js" target="_blank" rel="noreferrer"
-                class="text-link">trepo/trepo-js</a></li>
-            <li><a href="https://github.com/spacedoc/spacedoc" target="_blank" rel="noreferrer"
-                class="text-link">spacedoc/spacedoc</a></li>
-            <li><a href="https://github.com/oknosoft/metadata.js" target="_blank" rel="noreferrer"
-                class="text-link">oknosoft/metadata.js</a></li>
-            <li><a href="https://github.com/uber-web/uber-eslint" target="_blank" rel="noreferrer"
-                class="text-link">uber-web/uber-eslint</a></li>
-            <li><a href="https://github.com/brittanica/brittanica" target="_blank" rel="noreferrer"
-                class="text-link">brittanica/brittanica</a></li>
-            <li><a href="https://github.com/openzipkin/zipkin-js" target="_blank" rel="noreferrer"
-                class="text-link">openzipkin/zipkin-js</a></li>
-            <li><a href="https://github.com/vudash/vudash" target="_blank" rel="noreferrer"
-                class="text-link">vudash/vudash</a></li>
-            <li><a href="https://github.com/nteract/commuter" target="_blank" rel="noreferrer"
-                class="text-link">nteract/commuter</a></li>
-            <li><a href="https://github.com/frintjs/frint" target="_blank" rel="noreferrer"
-                class="text-link">frintjs/frint</a></li>
-            <li><a href="https://github.com/fyndiq/fyndiq-ui" target="_blank" rel="noreferrer"
-                class="text-link">fyndiq/fyndiq-ui</a></li>
-            <li><a href="https://github.com/azu/immutable-array-prototype" target="_blank" rel="noreferrer"
-                class="text-link">azu/immutable-array-prototype</a></li>
-            <li><a href="https://github.com/TrueCar/gluestick" target="_blank" rel="noreferrer"
-                class="text-link">TrueCar/gluestick</a></li>
-            <li><a href="https://github.com/KELiON/create-cerebro-plugin" target="_blank" rel="noreferrer"
-                class="text-link">KELiON/create-cerebro-plugin</a></li>
-            <li><a href="https://github.com/phenomic/phenomic" target="_blank" rel="noreferrer"
-                class="text-link">phenomic/phenomic</a></li>
-            <li><a href="https://github.com/sterjakovigor/vqua" target="_blank" rel="noreferrer"
-                class="text-link">sterjakovigor/vqua</a></li>
-            <li><a href="https://github.com/wireapp/wire-web-packages" target="_blank" rel="noreferrer"
-                class="text-link">wireapp/wire-web-packages</a></li>
-            <li><a href="https://github.com/klis87/redux-saga-requests" target="_blank" rel="noreferrer"
-                class="text-link">klis87/redux-saga-requests</a></li>
-            <li><a href="https://github.com/WordPress/gutenberg" target="_blank" rel="noreferrer"
-                class="text-link">WordPress/gutenberg</a></li>
-            <li><a href="https://github.com/react-cosmos/react-cosmos" target="_blank" rel="noreferrer"
-                class="text-link">react-cosmos/react-cosmos</a></li>
-            <li><a href="https://github.com/jsbites/jedifocus-monorepo" target="_blank" rel="noreferrer"
-                class="text-link">jsbites/jedifocus-monorepo</a></li>
-            <li><a href="https://github.com/FoalTS/foal" target="_blank" rel="noreferrer"
-                class="text-link">FoalTS/foal</a></li>
-            <li><a href="https://github.com/emotion-js/emotion" target="_blank" rel="noreferrer"
-                class="text-link">emotion-js/emotion</a></li>
-            <li><a href="https://github.com/Bamieh/reflow/" target="_blank" rel="noreferrer"
-                class="text-link">Bamieh/reflow</a></li>
-            <li><a href="https://github.com/transloadit/uppy/" target="_blank" rel="noreferrer"
-                class="text-link">transloadit/uppy</a></li>
-            <li><a href="https://github.com/olistic/warriorjs" target="_blank" rel="noreferrer"
-                class="text-link">olistic/warriorjs</a></li>
-            <li><a href="https://github.com/gatsbyjs/gatsby" target="_blank" rel="noreferrer"
-                class="text-link">gatsbyjs/gatsby</a></li>
-            <li><a href="https://github.com/feathersjs/feathers" target="_blank" rel="noreferrer"
-                class="text-link">feathersjs/feathers</a></li>
-            <li><a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noreferrer"
-                class="text-link">vuejs/vue-cli</a></li>
-            <li><a href="https://github.com/dvajs/dva" target="_blank" rel="noreferrer" class="text-link">dvajs/dva</a>
-            </li>
-            <li><a href="https://github.com/umijs/umi" target="_blank" rel="noreferrer" class="text-link">umijs/umi</a>
-            </li>
-            <li><a href="https://github.com/SBoudrias/Inquirer.js" target="_blank" rel="noreferrer"
-                class="text-link">SBoudrias/Inquirer.js</a></li>
-            <li><a href="https://github.com/pedronauck/docz" target="_blank" rel="noreferrer"
-                class="text-link">pedronauck/docz</a></li>
-            <li><a href="https://github.com/tasitlabs/tasitsdk" target="_blank" rel="noreferrer"
-                class="text-link">tasitlabs/tasitsdk</a></li>
-            <li><a href="https://github.com/zeit/next.js" target="_blank" rel="noreferrer"
-                class="text-link">zeit/next.js</a></li>
-            <li><a href="https://github.com/react-bootstrap-table/react-bootstrap-table2" target="_blank"
-                rel="noreferrer" class="text-link">react-bootstrap-table/react-bootstrap-table2</a>
-            </li>
-            <li><a href="https://github.com/webpack/webpack-cli" target="_blank" rel="noreferrer"
-                class="text-link">webpack/webpack-cli</a></li>
-            <li><a href="https://github.com/reakit/reakit" target="_blank" rel="noreferrer"
-                class="text-link">reakit/reakit</a></li>
-            <li><a href="https://github.com/webdriverio/webdriverio" target="_blank" rel="noreferrer"
-                class="text-link">webdriverio/webdriverio</a></li>
-            <li><a href="https://github.com/graycoreio/daffodil" target="_blank" rel="noreferrer"
-                class="text-link">graycoreio/daffodil</a></li>
-            <li><a href="https://github.com/typescript-eslint/typescript-eslint" target="_blank" rel="noreferrer"
-                class="text-link">typescript-eslint/typescript-eslint</a>
-            </li>
-            <li><a href="https://github.com/stoplightio/prism" target="_blank" rel="noreferrer"
-                class="text-link">stoplightio/prism</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <!--END OF USERS SECTION-->
-  </main>
-
-  <footer class="footer">
-    <div class="content-wrapper">
-      <div class="footer__content">
-        <div class="footer__socials">
-          <a href="https://github.com/lerna/lerna" class="footer__social-link u-mb-1" target="_blank" rel="noreferrer">
-            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+          <div class="footer__copyright">
+            <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M10.08,10.86C10.13,10.53 10.24,10.24 10.38,10C10.5,9.74 10.72,9.53 10.97,9.37C11.21,9.22 11.5,9.15 11.88,9.14C12.11,9.15 12.32,9.19 12.5,9.27C12.71,9.36 12.89,9.5 13.03,9.63C13.17,9.78 13.28,9.96 13.37,10.16C13.46,10.36 13.5,10.58 13.5,10.8H15.3C15.28,10.33 15.19,9.9 15,9.5C14.85,9.12 14.62,8.78 14.32,8.5C14,8.22 13.66,8 13.24,7.84C12.82,7.68 12.36,7.61 11.85,7.61C11.2,7.61 10.63,7.72 10.15,7.95C9.67,8.18 9.27,8.5 8.95,8.87C8.63,9.26 8.39,9.71 8.24,10.23C8.09,10.75 8,11.29 8,11.87V12.14C8,12.72 8.08,13.26 8.23,13.78C8.38,14.3 8.62,14.75 8.94,15.13C9.26,15.5 9.66,15.82 10.14,16.04C10.62,16.26 11.19,16.38 11.84,16.38C12.31,16.38 12.75,16.3 13.16,16.15C13.57,16 13.93,15.79 14.24,15.5C14.55,15.25 14.8,14.94 15,14.58C15.16,14.22 15.27,13.84 15.28,13.43H13.5C13.5,13.64 13.43,13.83 13.34,14C13.25,14.19 13.13,14.34 13,14.47C12.83,14.6 12.66,14.7 12.46,14.77C12.27,14.84 12.07,14.86 11.86,14.87C11.5,14.86 11.2,14.79 10.97,14.64C10.72,14.5 10.5,14.27 10.38,14C10.24,13.77 10.13,13.47 10.08,13.14C10.03,12.81 10,12.47 10,12.14V11.87C10,11.5 10.03,11.19 10.08,10.86M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20Z"
+              />
             </svg>
-            <span>Github</span>
-          </a>
-          <a href="https://twitter.com/lernajs" class="footer__social-link" target="_blank" rel="noreferrer">
-            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-              <path fill="currentColor"
-                d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
-            </svg>
-            <span>Twitter</span>
-          </a>
-        </div>
-        <div class="footer__copyright">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M10.08,10.86C10.13,10.53 10.24,10.24 10.38,10C10.5,9.74 10.72,9.53 10.97,9.37C11.21,9.22 11.5,9.15 11.88,9.14C12.11,9.15 12.32,9.19 12.5,9.27C12.71,9.36 12.89,9.5 13.03,9.63C13.17,9.78 13.28,9.96 13.37,10.16C13.46,10.36 13.5,10.58 13.5,10.8H15.3C15.28,10.33 15.19,9.9 15,9.5C14.85,9.12 14.62,8.78 14.32,8.5C14,8.22 13.66,8 13.24,7.84C12.82,7.68 12.36,7.61 11.85,7.61C11.2,7.61 10.63,7.72 10.15,7.95C9.67,8.18 9.27,8.5 8.95,8.87C8.63,9.26 8.39,9.71 8.24,10.23C8.09,10.75 8,11.29 8,11.87V12.14C8,12.72 8.08,13.26 8.23,13.78C8.38,14.3 8.62,14.75 8.94,15.13C9.26,15.5 9.66,15.82 10.14,16.04C10.62,16.26 11.19,16.38 11.84,16.38C12.31,16.38 12.75,16.3 13.16,16.15C13.57,16 13.93,15.79 14.24,15.5C14.55,15.25 14.8,14.94 15,14.58C15.16,14.22 15.27,13.84 15.28,13.43H13.5C13.5,13.64 13.43,13.83 13.34,14C13.25,14.19 13.13,14.34 13,14.47C12.83,14.6 12.66,14.7 12.46,14.77C12.27,14.84 12.07,14.86 11.86,14.87C11.5,14.86 11.2,14.79 10.97,14.64C10.72,14.5 10.5,14.27 10.38,14C10.24,13.77 10.13,13.47 10.08,13.14C10.03,12.81 10,12.47 10,12.14V11.87C10,11.5 10.03,11.19 10.08,10.86M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20Z" />
-          </svg>
-          <span>Lerna</span>
+            <span>Lerna</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer__border"></div>
-  </footer>
+      <div class="footer__border"></div>
+    </footer>
 
-  <script src="./app.js"></script>
-</body>
+    <script src="./app.js"></script>
+  </body>
 </html>
